@@ -90,8 +90,7 @@ void getLDRValue() {
 //-- this could be done as a formatted string, using Serial.printf(), but
 //-- we are doing it in a simpler way for the purposes of teaching
 void sendSerialData() {
-  // Add switch on or off (Not used in Processing sketch
-  if(buttonCounter%2==0) 
+  if(buttonCounter%2==0)// Add switch on or off (Not used in Processing sketch)
   {
     Serial.print(1);
   }
