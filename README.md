@@ -1,5 +1,7 @@
 # Project3_StoveSafety
-Warning alarm that goes off if someone's hand is too close to a stove.
+### Warning alarm that goes off if someone's hand is too close to a stove.
+### Takes in data from potentiometer and LDR and sends it to sketch in Processing
+
 ## This repository includes:
 ### Processing code
 ### Arduino code
