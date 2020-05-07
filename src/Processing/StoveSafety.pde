@@ -2,9 +2,16 @@
   StoveSafety
   by Alvin Tran
   
-  Get data from ESP32 to manipulate a sketch in Processing
-  Alert a cook whether their hands are too close to a stove
-  Sound an alarm if their hands are too close
+  *Get data from ESP32 to manipulate a sketch in Processing
+  *Alert a cook whether their hands are too close to a stove
+  *Sound an alarm if their hands are too close
+  
+  *Map function for printing potValue (Complete)
+  *Comments on functions (Complete)
+  
+  Warnings:
+  *Alarm plays if potValue and sensorValue fit the conditions for drawUnsafe() if sketch is started
+  *Alarm has a large delay in stopping (Works for project, but really irritating)
  */
  
 
@@ -127,7 +134,7 @@ void checkSerial() {
   }
 } 
 
-void IsItOn(){  
+void IsItOn(){//Checks potValue to see whether to turn stove on or off  
   if(potValue>=1000)
   {  
     drawBackground();
@@ -138,7 +145,7 @@ void IsItOn(){
   }
 }
 
-void drawBackground() {  
+void drawBackground() {//Turns the stove on and checks to see if hand is too close to the stove
   if(sensorValue<=200 && potValue>2500)
   {
     drawUnsafe(); 
@@ -153,7 +160,7 @@ void drawBackground() {
   }
 }
 
-void drawTemperature()
+void drawTemperature()//Displays progress bar at bottom of the screen
 {
   //draw fill
   fill(green);
@@ -166,7 +173,7 @@ void drawTemperature()
   rect(hMargin, height-100, progressBarWidth, progressBarHeight);
 }
 
-void drawOff(){
+void drawOff(){//Screen that appears if stove is off
   if(state==blackState)
   {
     background(black);      
@@ -176,7 +183,7 @@ void drawOff(){
     
     textFont(f);       
     fill(black);
-    text(potValue+" F", textPlacementX, textPlacementY);
+    text(map(potValue, 0, 1000, 0, 100)+" F", textPlacementX, textPlacementY);
     
     if(blackTimer.expired())
     {
@@ -203,7 +210,7 @@ void drawOff(){
   } 
  }
  
- void drawSafe(){            
+ void drawSafe(){//Screen that appears if stove is on and hand is off the stove    
    if(state==steelblueState)
    {
      background(steelblue);      
@@ -227,7 +234,7 @@ void drawOff(){
 
       textFont(f);       
       fill(steelblue);
-      text(potValue+" F", textPlacementX, textPlacementY);     
+      text(map(potValue, 1000, 4095, 100, 600)+" F", textPlacementX, textPlacementY);
       
       if(whiteTimer.expired())
       {
@@ -237,7 +244,7 @@ void drawOff(){
     }
  }
  
- void drawUnsafe(){     
+ void drawUnsafe(){//Screen that appears if stove is on and hand is on the stove
    if(state==yellowState)
    {
      background(yellow);     
@@ -264,7 +271,7 @@ void drawOff(){
       
      textFont(f);       
      fill(black);
-     text(potValue+" F", textPlacementX, textPlacementY); 
+     text(map(potValue, 1000, 4095, 100, 600)+" F", textPlacementX, textPlacementY);
      
      if(redTimer.expired())
      {
@@ -274,12 +281,12 @@ void drawOff(){
    }
  }
 
-void loadAlarm()
+void loadAlarm()//Load audiofile for alarm
 {  
   alarm=new SoundFile(this, "Alarm.wav");   
 }
 
-void checkAlarm(){
+void checkAlarm(){//Checks alarmState to see if alarm should be played or stopped
   if(alarmState==true)
   {
     playAlarm();
@@ -290,11 +297,11 @@ void checkAlarm(){
   }
 }
 
-void playAlarm(){
+void playAlarm(){//Plays alarm
   alarm.play();
 }
 
-void stopAlarm(){
+void stopAlarm(){//Stops alarm
   alarm.stop();
 }
 
