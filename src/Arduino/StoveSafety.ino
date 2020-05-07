@@ -1,6 +1,8 @@
 /*
   StoveSafety
   by Alvin Tran
+
+  Send potentiometer and LDR sensor data to a sketch in processing
  */
 
 int ledPin=15;
