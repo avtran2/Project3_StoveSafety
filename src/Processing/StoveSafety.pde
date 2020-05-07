@@ -1,7 +1,10 @@
 /*
   StoveSafety
   by Alvin Tran
+  
   Get data from ESP32 to manipulate a sketch in Processing
+  Alert a cook whether their hands are too close to a stove
+  Sound an alarm if their hands are too close
  */
  
 
