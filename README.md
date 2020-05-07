@@ -13,4 +13,4 @@ Warning alarm that goes off if someone's hand is too close to a stove.
 ### Close-up of board
 ### Far shot of board
 ### Illustrations of drawOff()'s blackState and whiteState
-### Video demonstration (Shows unmapped values on screen)
+### Video demonstration (Shows unmapped values on screen) (Values are mapped in final code)
