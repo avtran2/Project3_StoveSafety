@@ -16,3 +16,4 @@
 ### Far shot of board
 ### Illustrations of drawOff()'s blackState and whiteState
 ### Video demonstration (Shows unmapped values on screen) (Values are mapped in final code)
+### Video demonstration (Shows mapped values on screen)
